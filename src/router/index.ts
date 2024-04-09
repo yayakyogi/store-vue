@@ -7,6 +7,7 @@ import FormViewVue from '@/views/FormView.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import TesLayoutVue from '@/layouts/TesLayout.vue'
 import DetailStoreView from '@/views/DetailStoreView.vue'
+import TransactionSuccessView from '@/views/TransactionSuccessView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,14 @@ const router = createRouter({
       path: '/cart',
       name: 'cart',
       component: CartView,
+      meta: {
+        layout: MainLayout
+      }
+    },
+    {
+      path: '/thank-you',
+      name: 'thank-you',
+      component: TransactionSuccessView,
       meta: {
         layout: MainLayout
       }
