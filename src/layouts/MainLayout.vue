@@ -22,10 +22,10 @@ import { RouterLink } from 'vue-router'
           <RouterLink to="#">
             <Button type="ghost">Rewards</Button>
           </RouterLink>
-          <RouterLink to="#">
+          <RouterLink to="sign-up">
             <Button type="ghost">Sign Up</Button>
           </RouterLink>
-          <RouterLink to="#">
+          <RouterLink to="sign-in">
             <Button type="primary">Sign In</Button>
           </RouterLink>
         </div>

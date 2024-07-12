@@ -151,7 +151,7 @@ const onFinishFailed = (errorInfo: any) => {
           name="city"
           :rules="[{ required: true, message: 'Please input your city!' }]"
         >
-         <a-select :disabled="!formState.province" v-model:value="formState.city">
+          <a-select :disabled="!formState.province" v-model:value="formState.city">
             <a-select-option value="tulungagung">Tulungagung</a-select-option>
             <a-select-option value="trenggalek">Trenggalek</a-select-option>
             <a-select-option value="kediri">Kediri</a-select-option>
@@ -165,7 +165,7 @@ const onFinishFailed = (errorInfo: any) => {
           name="district"
           :rules="[{ required: true, message: 'Please input your district!' }]"
         >
-         <a-select :disabled="!formState.city" v-model:value="formState.city">
+          <a-select :disabled="!formState.city" v-model:value="formState.district">
             <a-select-option value="kauman">Kauman</a-select-option>
             <a-select-option value="gondang">Gondang</a-select-option>
             <a-select-option value="kedungwaru">Kedungwaru</a-select-option>
@@ -201,7 +201,7 @@ const onFinishFailed = (errorInfo: any) => {
         <span class="label">Shipping Cost</span>
         <span class="value">Rp 35000</span>
       </a-flex>
-      <a-divider class="my-4"/>
+      <a-divider class="my-4" />
       <a-flex class="row" justify="space-between">
         <span class="label">Total</span>
         <span class="total">Rp 160000</span>

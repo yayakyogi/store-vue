@@ -18,22 +18,6 @@ const breadcrumbs: BreadcrumbProps[] = [
 </script>
 
 <template>
-  <!-- Breadcrumb Section -->
-  <!-- <a-breadcrumb class="mt-8">
-    <a-breadcrumb-item>
-      <RouterLink :to="{ name: 'home', path: '/' }">Home</RouterLink>
-    </a-breadcrumb-item>
-    <a-breadcrumb-item>
-      <RouterLink :to="{ name: 'store-detail', path: `${$route.params.store}` }">
-        <span class="breadcrumb-item">{{ $route.params.store }}</span>
-      </RouterLink>
-    </a-breadcrumb-item>
-    <a-breadcrumb-item>
-      <span class="breadcrumb-item">
-        {{ $route.params.product }}
-      </span>
-    </a-breadcrumb-item>
-  </a-breadcrumb> -->
   <BreadcrumbSection :breadcrumbs="breadcrumbs" className="mt-8" />
 
   <!-- Image Preview Section -->
