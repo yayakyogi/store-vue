@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive } from 'vue'
+import { Button } from 'ant-design-vue'
 
-  interface FormStateProps {
-    email: string;
-    password:string;
-  }
+interface FormStateProps {
+  email: string
+  password: string
+}
 
-  const formState = reactive<FormStateProps>({
-    email: '',
-    password: '',
-  })
+const formState = reactive<FormStateProps>({
+  email: '',
+  password: ''
+})
 </script>
 
 <template>
@@ -30,8 +31,12 @@ import { reactive } from 'vue';
           <a-input v-model:value="formState.password" type="password" />
         </a-form-item>
         <a-form-item>
-          <a-button size="large" class="w-full mt-5" type="primary" html-type="submit">Sign In to My Account</a-button>
-          <a-button size="large" class="w-full mt-4">Sign Up</a-button>
+          <Button size="large" class="w-full" type="primary" html-type="submit">
+            Sign In to My Account
+          </Button>
+          <RouterLink to="/sign-up">
+            <Button size="large" type="link" class="w-full mt-2 text-green-600">Sign Up</Button>
+          </RouterLink>
         </a-form-item>
       </a-form>
     </div>
@@ -63,7 +68,7 @@ import { reactive } from 'vue';
   .banner-bg {
     width: 450px;
     height: 550px;
-    border: 1px solid #E4E4E4;
+    border: 1px solid #e4e4e4;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
   }

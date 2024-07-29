@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { Button } from 'ant-design-vue'
 
 interface FormState {
   name: string
@@ -20,6 +21,10 @@ const formState = reactive<FormState>({
   storeName: '',
   storeCategory: ''
 })
+
+const onSubmit = () => {
+  console.log('form ', formState)
+}
 </script>
 
 <template>
@@ -37,7 +42,7 @@ const formState = reactive<FormState>({
         <a-form-item label="Email" name="email">
           <a-input v-model:value="formState.email" />
         </a-form-item>
-        
+
         <!-- Address -->
         <a-form-item label="Address" name="address">
           <a-input v-model:value="formState.address" />
@@ -48,19 +53,18 @@ const formState = reactive<FormState>({
           <a-input v-model:value="formState.password" type="password" />
         </a-form-item>
 
-        <a-form-item label="Store">
-          <p class="mt-0">Apakah anda juga ingin membuka toko?</p>
+        <a-form-item label="Apakah anda juga ingin membuka toko?">
           <a-radio-group v-model:value="formState.openStore">
-            <a-radio value="true">Iya Boleh</a-radio>
-            <a-radio value="false">Enggak dulu deh</a-radio>
+            <a-radio :value="true">Iya Boleh</a-radio>
+            <a-radio :value="false">Enggak dulu deh</a-radio>
           </a-radio-group>
         </a-form-item>
 
-        <a-form-item label="Nama Toko">
+        <a-form-item v-if="formState.openStore" label="Nama Toko">
           <a-input v-model:value="formState.storeName" />
         </a-form-item>
 
-        <a-form-item label="Category">
+        <a-form-item v-if="formState.openStore" label="Category">
           <a-select v-model:value="formState.storeCategory">
             <a-select-option value="retail">Retail</a-select-option>
             <a-select-option value="kelontong">Kelontong</a-select-option>
@@ -68,12 +72,18 @@ const formState = reactive<FormState>({
         </a-form-item>
 
         <a-form-item>
-          <a-button class="mt-4 w-full" size="large" type="primary" html-type="submit">
+          <Button
+            class="mt-4 w-full"
+            size="large"
+            type="primary"
+            html-type="submit"
+            @click="onSubmit"
+          >
             Sign Up Now
-          </a-button>
-          <a-button class="mt-4 w-full" size="large">
-            Back to Login
-          </a-button>
+          </Button>
+          <RouterLink to="/sign-in">
+            <Button type="link" class="w-full mt-2 text-green-600" size="large">Sign In</Button>
+          </RouterLink>
         </a-form-item>
       </a-form>
     </a-flex>
