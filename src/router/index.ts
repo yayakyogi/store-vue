@@ -7,8 +7,15 @@ import FormViewVue from '@/views/FormView.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import TesLayoutVue from '@/layouts/TesLayout.vue'
 import DetailStoreView from '@/views/DetailStoreView.vue'
+import SignUp from '@/views/SignUp.vue'
+import SignIn from '@/views/SignIn.vue'
 import TransactionSuccessView from '@/views/TransactionSuccessView.vue'
-import { Layout } from 'ant-design-vue'
+// Admin
+import DashboardLayout from '@/layouts/DashboardLayout.vue'
+import DashboardView from '@/views/admin/DashboardView.vue'
+import ProductView from '@/views/admin/ProductView.vue'
+import ProductAdd from '@/views/admin/ProductAdd.vue'
+import ProductDetail from '@/views/admin/ProductDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,7 +63,7 @@ const router = createRouter({
     {
       path: '/sign-up',
       name: 'signup',
-      component: () => import('../views/SignUp.vue'),
+      component: SignUp,
       meta: {
         layout: MainLayout
       }
@@ -64,7 +71,7 @@ const router = createRouter({
     {
       path: '/sign-in',
       name: 'signin',
-      component: () => import('../views/SingIn.vue'),
+      component: SignIn,
       meta: {
         layout: MainLayout
       }
@@ -77,21 +84,35 @@ const router = createRouter({
         layout: MainLayout
       }
     },
+    // DASHBOARD ROUTE
     {
-      path: '/tes',
-      name: 'tes',
-      component: TesViewVue,
+      path: '/dashboard',
+      name: 'dashboard',
+      component: DashboardView,
       meta: {
-        layout: TesLayoutVue
+        layout: DashboardLayout
       }
     },
     {
-      path: '/form',
-      name: 'form',
-      component: FormViewVue,
+      path: '/products',
+      name: 'products',
       meta: {
-        layout: MainLayout
-      }
+        layout: DashboardLayout
+      },
+      children: [
+        {
+          path: '',
+          component: ProductView
+        },
+        {
+          path: ':id',
+          component: ProductDetail
+        },
+        {
+          path: 'add',
+          component: ProductAdd
+        }
+      ]
     }
   ]
 })

@@ -5,34 +5,40 @@ import ProductSection, { type ProductProps } from '@/components/ProductSection.v
 const products: ProductProps[] = [
   {
     title: 'Product 1',
-    image: 'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
+    image:
+      'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
     price: 2000
   },
   {
     title: 'Product 1',
-    image: 'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
+    image:
+      'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
     price: 2000
   },
   {
     title: 'Product 1',
-    image: 'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
+    image:
+      'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
     price: 2000
   },
   {
     title: 'Product 1',
-    image: 'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
+    image:
+      'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
     price: 2000
   },
   {
     title: 'Product 1',
-    image: 'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
+    image:
+      'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
     price: 2000
   },
   {
     title: 'Product 1',
-    image: 'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
+    image:
+      'https://images.tokopedia.net/img/cache/200-square/VqbcmM/2023/10/11/c822cd32-3608-46bc-8d25-db89d376a240.jpg',
     price: 2000
-  },
+  }
 ]
 </script>
 
@@ -52,12 +58,3 @@ const products: ProductProps[] = [
   }
 }
 </style>
-
-<!-- <script lang="ts">
-  export default {
-    name: 'HomeView',
-    created() {
-      document.title = 'Home - Store'
-    }
-  }
-</script> -->
