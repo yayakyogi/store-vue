@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HeaderSection from '@/components/admin/HeaderSection.vue'
+import TransactionCard from '@/components/admin/TransactionCard.vue'
 
 const recentTransctions = [
   {
@@ -39,18 +40,14 @@ const recentTransctions = [
   </div>
   <div class="mt-6">
     <h3 class="font-normal">Recent Transaction</h3>
-    <div
+    <TransactionCard
       v-for="transaction in recentTransctions"
-      v-bind:key="transaction.id"
-      class="bg-white flex items-center gap-3 p-3 pe-8 rounded-lg mb-5"
-    >
-      <div class="flex-1 flex items-center gap-3">
-        <img :src="transaction.image" alt="img-product" class="w-16 h-16 rounded-md" />
-        <div class="w-[200px]">{{ transaction.product }}</div>
-        <div class="w-[200px]">{{ transaction.user }}</div>
-        <div class="w-[200px]">{{ transaction.date }}</div>
-      </div>
-      <div class="i-mdi:chevron-right text-2xl" />
-    </div>
+      :key="transaction.id"
+      :id="transaction.id"
+      :product="transaction.product"
+      :image="transaction.image"
+      :date="transaction.date"
+      user="Shaina"
+    />
   </div>
 </template>

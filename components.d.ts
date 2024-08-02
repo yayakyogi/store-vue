@@ -15,6 +15,7 @@ declare module 'vue' {
     ACardMeta: typeof import('ant-design-vue/es')['CardMeta']
     ACol: typeof import('ant-design-vue/es')['Col']
     AComment: typeof import('ant-design-vue/es')['Comment']
+    AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     ADivider: typeof import('ant-design-vue/es')['Divider']
     AFlex: typeof import('ant-design-vue/es')['Flex']
     AForm: typeof import('ant-design-vue/es')['Form']
@@ -27,6 +28,7 @@ declare module 'vue' {
     ASelectOption: typeof import('ant-design-vue/es')['SelectOption']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     ATooltip: typeof import('ant-design-vue/es')['Tooltip']
+    AUploadDragger: typeof import('ant-design-vue/es')['UploadDragger']
     BreadcrumbSection: typeof import('./src/components/BreadcrumbSection.vue')['default']
     Card: typeof import('./src/components/Card.vue')['default']
     CardComponent: typeof import('./src/components/CardComponent.vue')['default']
@@ -38,10 +40,12 @@ declare module 'vue' {
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
+    ProductForm: typeof import('./src/components/admin/ProductForm.vue')['default']
     ProductSection: typeof import('./src/components/ProductSection.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
+    TransactionCard: typeof import('./src/components/admin/TransactionCard.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
 }

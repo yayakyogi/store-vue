@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import BreadcrumbSection, {type  BreadcrumbProps } from '@/components/BreadcrumbSection.vue'
+import BreadcrumbSection, { type BreadcrumbProps } from '@/components/BreadcrumbSection.vue'
 import { useRoute } from 'vue-router'
 
-const route = useRoute();
+const route = useRoute()
 
 const breadcrumbs: BreadcrumbProps[] = [
   {
@@ -152,7 +152,7 @@ const breadcrumbs: BreadcrumbProps[] = [
         Buy Now
       </a-button>
       <a-button size="large" class="w-full flex justify-center items-center gap-2 mt-3">
-        <template #icon><div class="i-mdi:basket text-xl"></div></template>
+        <template #icon><div class="i-mdi:basket text-xl" /></template>
         Add to Cart
       </a-button>
     </div>

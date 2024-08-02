@@ -23,7 +23,7 @@ const formState = reactive<FormStateProps>({
     </div>
     <div class="mt-5">
       <p class="text-3xl line-height-normal mb-10">Belanja kebutuhan utama jadi lebih mudah</p>
-      <a-form layout="vertical" class="">
+      <a-form layout="vertical">
         <a-form-item label="Email">
           <a-input v-model:value="formState.email" />
         </a-form-item>

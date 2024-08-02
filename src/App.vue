@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-
 </script>
 
 <template>
   <component :is="$route.meta.layout || 'div'">
-    <RouterView/>
+    <a-config-provider
+      :theme="{
+        token: {
+          colorPrimary: '#29A867'
+        }
+      }"
+    >
+      <RouterView />
+    </a-config-provider>
   </component>
 </template>
 
