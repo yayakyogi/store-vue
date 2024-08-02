@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import HeaderSection from '@/components/admin/HeaderSection.vue'
 import TransactionCard from '@/components/admin/TransactionCard.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const recentTransctions = [
   {
@@ -39,7 +42,10 @@ const recentTransctions = [
     </a-card>
   </div>
   <div class="mt-6">
-    <h3 class="font-normal">Recent Transaction</h3>
+    <div class="flex justify-between items-center">
+      <h3 class="font-normal">Recent Transaction</h3>
+      <a-button type="primary" @click="() => router.push('/transactions')">See all</a-button>
+    </div>
     <TransactionCard
       v-for="transaction in recentTransctions"
       :key="transaction.id"

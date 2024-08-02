@@ -28,8 +28,6 @@ const routes = [
   }
 ]
 
-console.log('route ', router.currentRoute.value)
-
 // to set active route when changed
 router.afterEach((to) => (activeRoute.value = to.matched[0].path))
 </script>

@@ -14,8 +14,10 @@ import TransactionSuccessView from '@/views/TransactionSuccessView.vue'
 import DashboardLayout from '@/layouts/DashboardLayout.vue'
 import DashboardView from '@/views/admin/DashboardView.vue'
 import ProductView from '@/views/admin/ProductView.vue'
-import ProductAdd from '@/views/admin/ProductAdd.vue'
-import ProductDetail from '@/views/admin/ProductDetail.vue'
+import ProductAddView from '@/views/admin/ProductAddView.vue'
+import ProductDetailView from '@/views/admin/ProductDetailView.vue'
+import TransactionView from '@/views/admin/TransactionView.vue'
+import TransactionDetailView from '@/views/admin/TransactionDetailView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -106,11 +108,28 @@ const router = createRouter({
         },
         {
           path: ':id',
-          component: ProductDetail
+          component: ProductDetailView
         },
         {
           path: 'add',
-          component: ProductAdd
+          component: ProductAddView
+        }
+      ]
+    },
+    {
+      path: '/transactions',
+      name: 'transactions',
+      meta: {
+        layout: DashboardLayout
+      },
+      children: [
+        {
+          path: '',
+          component: TransactionView
+        },
+        {
+          path: ':id',
+          component: TransactionDetailView
         }
       ]
     }

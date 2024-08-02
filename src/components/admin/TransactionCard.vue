@@ -8,7 +8,7 @@ defineProps<{ id: number; image: string; product: string; user: string; date: st
 <template>
   <div
     class="bg-white flex items-center gap-3 p-2 pe-8 rounded-lg mb-3 hover:cursor-pointer"
-    @click="() => router.push(`/transaction/${id}`)"
+    @click="() => router.push(`/transactions/${id}`)"
   >
     <div class="flex-1 flex items-center gap-3">
       <img :src="image" alt="img-product" class="w-16 h-16 rounded-md" />
