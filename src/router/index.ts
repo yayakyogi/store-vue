@@ -19,6 +19,7 @@ import ProductDetailView from '@/views/admin/ProductDetailView.vue'
 import TransactionView from '@/views/admin/TransactionView.vue'
 import TransactionDetailView from '@/views/admin/TransactionDetailView.vue'
 import StoreSettingView from '@/views/admin/StoreSettingView.vue'
+import AccountView from '@/views/admin/AccountView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -137,6 +138,13 @@ const router = createRouter({
     {
       path: '/settings',
       component: StoreSettingView,
+      meta: {
+        layout: DashboardLayout
+      }
+    },
+    {
+      path: '/accounts',
+      component: AccountView,
       meta: {
         layout: DashboardLayout
       }

@@ -23,7 +23,7 @@ const routes = [
     title: 'Store Settings'
   },
   {
-    path: '/account',
+    path: '/accounts',
     title: 'My Account'
   }
 ]
@@ -34,7 +34,7 @@ router.afterEach((to) => (activeRoute.value = to.matched[0].path))
 
 <template>
   <div class="container-dashboard">
-    <div class="sidenav">
+    <div class="sidenav relative">
       <div class="flex justify-center items-center h-150px w-full mb-5">
         <img src="/images/logo/main-logo.png" class="w-16" />
       </div>
@@ -48,6 +48,9 @@ router.afterEach((to) => (activeRoute.value = to.matched[0].path))
           >
         </RouterLink>
       </div>
+      <a-button type="link" class="absolute bottom-2 left-0 w-full text-left h-[55px] text-black"
+        >Sign Out</a-button
+      >
     </div>
     <div class="admin-content">
       <slot></slot>
