@@ -93,6 +93,7 @@ import { RouterLink } from 'vue-router'
     padding: 20px 0;
     color: @grey-color;
     font-size: 14px;
+    margin-top: 30px;
   }
 }
 </style>

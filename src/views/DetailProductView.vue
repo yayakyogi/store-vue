@@ -1,165 +1,144 @@
-<script setup lang="ts">
-import BreadcrumbSection, { type BreadcrumbProps } from '@/components/BreadcrumbSection.vue'
+<script lang="ts">
+import BreadcrumbSection from '@/components/BreadcrumbSection.vue'
 import { useRoute } from 'vue-router'
 
-const route = useRoute()
-
-const breadcrumbs: BreadcrumbProps[] = [
-  {
-    name: 'store-detail',
-    title: `${route.params.store}`,
-    link: `${route.params.store}`
+export default {
+  data() {
+    return {
+      route: useRoute(),
+      loading: true,
+      qty: 1,
+      subtotal: 0,
+      product: {
+        id: 0,
+        image: '',
+        title: '',
+        description: '',
+        price: 0,
+        rating: {
+          rate: 0
+        }
+      },
+      breadcrumbs: []
+    }
   },
-  {
-    name: `${route.params.product}`,
-    title: `${route.params.product}`
+  methods: {
+    async getData() {
+      try {
+        const res = await fetch(`https://fakestoreapi.com/products/${this.route.params.product_id}`)
+        this.product = await res.json()
+        this.subtotal = this.product.price
+        this.loading = false
+      } catch (error) {
+        this.loading = false
+        console.log('error', error)
+      }
+    },
+
+    changeQty(type: 'increment' | 'decrement') {
+      if (type === 'increment') {
+        this.qty += 1
+      } else {
+        if (this.qty > 1) {
+          this.qty -= 1
+        }
+      }
+
+      if (this.qty >= 1) {
+        this.subtotal = this.qty * this.product.price
+      }
+    }
+  },
+  components: {
+    BreadcrumbSection
+  },
+  created() {
+    this.getData()
   }
-]
+}
 </script>
 
 <template>
-  <BreadcrumbSection :breadcrumbs="breadcrumbs" className="mt-8" />
+  <a-skeleton-input v-if="loading" active :size="20" class="mt-8" />
+  <BreadcrumbSection v-if="!loading" :breadcrumbs="breadcrumbs" className="mt-8" />
 
   <!-- Image Preview Section -->
   <a-row :gutter="[32]" class="mt-8">
-    <a-col :span="16" class="h-126.5 flex justify-center items-center overflow-hidden rounded-lg">
-      <img src="https://picsum.photos/1000" />
+    <a-col :span="16" class="flex justify-center items-center overflow-hidden image">
+      <a-skeleton-image v-if="loading" active :size="100" />
+      <img v-if="!loading" :src="product?.image" />
     </a-col>
     <a-col :span="8">
-      <a-row :gutter="[0, 13]">
-        <a-col class="h-40 w-full flex justify-center items-center overflow-hidden rounded-lg">
-          <img src="https://picsum.photos/401" />
-        </a-col>
-        <a-col class="h-40 w-full flex justify-center items-center overflow-hidden rounded-lg">
-          <img src="https://picsum.photos/402" />
-        </a-col>
-        <a-col class="h-40 w-full flex justify-center items-center overflow-hidden rounded-lg">
-          <img src="https://picsum.photos/403" />
-        </a-col>
-      </a-row>
+      <a-skeleton v-if="loading" active class="action" />
+      <div v-if="!loading" class="action">
+        <p class="label">Quantity</p>
+        <a-input size="large" min="0" :value="qty" class="w-35 text-center">
+          <template #addonBefore>
+            <div
+              class="i-mdi:minus-circle-outline text-lg cursor-pointer"
+              v-on:click="changeQty('decrement')"
+            ></div>
+          </template>
+          <template #addonAfter>
+            <div
+              class="i-mdi:plus-circle-outline text-lg cursor-pointer"
+              v-on:click="changeQty('increment')"
+            ></div>
+          </template>
+        </a-input>
+        <div class="flex justify-between items-center mt-4">
+          <span class="label">Subtotal</span>
+          <span class="subtotal">{{ `$${subtotal}` }}</span>
+        </div>
+        <a-button
+          type="primary"
+          size="large"
+          class="w-full flex justify-center items-center gap-2 mt-5"
+        >
+          <template #icon><div class="i-mdi:cart text-xl"></div></template>
+          Buy Now
+        </a-button>
+        <a-button size="large" class="w-full flex justify-center items-center gap-2 mt-3">
+          <template #icon><div class="i-mdi:basket text-xl" /></template>
+          Add to Cart
+        </a-button>
+      </div>
     </a-col>
   </a-row>
 
   <!-- Description Section -->
-  <div class="flex justify-between items-start gap-5 mt-8">
+  <a-skeleton v-if="loading" />
+  <div v-if="!loading" class="flex justify-between items-start gap-5 mt-8">
     <div class="flex-1 description">
-      <p class="product-title">Sofa Ternyaman</p>
+      <p class="product-title">{{ product.title }}</p>
       <p class="author">By Yogi</p>
-      <p class="price">Rp 400.000</p>
-      <p>
-        The Nike Air Max 720 SE goes bigger than ever before with Nike's tallest Air unit yet for
-        unimaginable, all-day comfort. There's super breathable fabrics on the upper, while colours
-        add a modern edge.
-      </p>
-      <p>
-        Bring the past into the future with the Nike Air Max 2090, a bold look inspired by the DNA
-        of the iconic Air Max 90. Brand-new Nike Air cushioning underfoot adds unparalleled comfort
-        while transparent mesh and vibrantly coloured details on the upper are blended with timeless
-        OG features for an edgy, modernised look.
-      </p>
-      <a-comment>
-        <template #actions>
-          <span key="comment-nested-reply-to">Reply to</span>
-        </template>
-        <template #author>
-          <a>Han Solo</a>
-        </template>
-        <template #avatar>
-          <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-        </template>
-        <template #content>
-          <p>
-            We supply a series of design principles, practical patterns and high quality design
-            resources (Sketch and Axure).
-          </p>
-        </template>
-        <a-comment>
-          <template #actions>
-            <span>Reply to</span>
-          </template>
-          <template #author>
-            <a>Han Solo</a>
-          </template>
-          <template #avatar>
-            <a-avatar src="#" alt="Han Solo" />
-          </template>
-          <template #content>
-            <p>
-              We supply a series of design principles, practical patterns and high quality design
-              resources (Sketch and Axure).
-            </p>
-          </template>
-          <a-comment>
-            <template #actions>
-              <span>Reply to</span>
-            </template>
-            <template #author>
-              <a>Han Solo</a>
-            </template>
-            <template #avatar>
-              <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-            </template>
-            <template #content>
-              <p>
-                We supply a series of design principles, practical patterns and high quality design
-                resources (Sketch and Axure).
-              </p>
-            </template>
-          </a-comment>
-          <a-comment>
-            <template #actions>
-              <span>Reply to</span>
-            </template>
-            <template #author>
-              <a>Han Solo</a>
-            </template>
-            <template #avatar>
-              <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-            </template>
-            <template #content>
-              <p>
-                We supply a series of design principles, practical patterns and high quality design
-                resources (Sketch and Axure).
-              </p>
-            </template>
-          </a-comment>
-        </a-comment>
-      </a-comment>
-      <p>Leave comment</p>
-      <a-textarea placeholder="Enter your command..." :rows="4" />
-      <a-button type="primary" class="mt-3 mb-5">Send Comment</a-button>
-    </div>
-    <div class="action">
-      <p class="label">Quantity</p>
-      <a-input size="large" min="0" value="1" class="w-35 text-center">
-        <template #addonBefore>
-          <div class="i-mdi:minus-circle-outline text-lg cursor-pointer"></div>
-        </template>
-        <template #addonAfter>
-          <div class="i-mdi:plus-circle-outline text-lg cursor-pointer"></div>
-        </template>
-      </a-input>
-      <div class="flex justify-between items-center mt-4">
-        <span class="label">Subtotal</span>
-        <span class="subtotal">Rp 20.000</span>
+      <p class="price">{{ `$${product.price}` }}</p>
+      <span class="text-xl">Description</span>
+      <p class="max-w-3/4 text-slate-7">{{ product.description }}</p>
+      <p class="text-xl">Product Review</p>
+      <div class="flex flex-col items-center my-3">
+        <img src="/images/illustrations/empty-review.svg" class="w-1/3" />
+        <p>This product doesn't have any review</p>
       </div>
-      <a-button
-        type="primary"
-        size="large"
-        class="w-full flex justify-center items-center gap-2 mt-5"
-      >
-        <template #icon><div class="i-mdi:cart text-xl"></div></template>
-        Buy Now
-      </a-button>
-      <a-button size="large" class="w-full flex justify-center items-center gap-2 mt-3">
-        <template #icon><div class="i-mdi:basket text-xl" /></template>
-        Add to Cart
-      </a-button>
+      <p>Leave comment</p>
+      <div class="flex flex-col w-a">
+        <a-textarea placeholder="Enter your command..." :rows="4" class="w-3/4" />
+        <a-button type="primary" class="mt-3 mb-5 w-32">Send Comment</a-button>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="less">
+.image {
+  height: 500px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
 .description {
   .product-title {
     font-size: 32px;
@@ -174,7 +153,7 @@ const breadcrumbs: BreadcrumbProps[] = [
 
   .price {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 24px;
     color: @orange-color;
   }
 }
@@ -190,6 +169,7 @@ const breadcrumbs: BreadcrumbProps[] = [
 
   .label {
     color: @grey-color;
+    margin-bottom: 10px;
   }
 
   .subtotal {

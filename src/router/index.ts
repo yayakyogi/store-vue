@@ -2,11 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import DetailProductView from '@/views/DetailProductView.vue'
 import CartView from '@/views/CartView.vue'
-import TesViewVue from '@/views/TesView.vue'
-import FormViewVue from '@/views/FormView.vue'
 import MainLayout from '@/layouts/MainLayout.vue'
-import TesLayoutVue from '@/layouts/TesLayout.vue'
-import DetailStoreView from '@/views/DetailStoreView.vue'
 import SignUp from '@/views/SignUp.vue'
 import SignIn from '@/views/SignIn.vue'
 import TransactionSuccessView from '@/views/TransactionSuccessView.vue'
@@ -23,6 +19,9 @@ import AccountView from '@/views/admin/AccountView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior() {
+    document.getElementById('app')?.scrollIntoView({ behavior: 'smooth' })
+  },
   routes: [
     {
       path: '/',
@@ -32,16 +31,16 @@ const router = createRouter({
         layout: MainLayout
       }
     },
+    // {
+    //   path: '/:store',
+    //   name: 'store-detail',
+    //   component: DetailStoreView,
+    //   meta: {
+    //     layout: MainLayout
+    //   }
+    // },
     {
-      path: '/:store',
-      name: 'store-detail',
-      component: DetailStoreView,
-      meta: {
-        layout: MainLayout
-      }
-    },
-    {
-      path: '/:store/:product',
+      path: '/product/:product_id',
       name: 'product-detail',
       component: DetailProductView,
       meta: {
