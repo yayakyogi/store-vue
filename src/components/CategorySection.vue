@@ -1,34 +1,22 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
+import CategorySkeleton from './skeleton/CategorySkeleton.vue';
 
 export default defineComponent({
   props: {
     categories: Array as PropType<string[]>,
     loading: Boolean
+  },
+  components: {
+    CategorySkeleton
   }
 })
 </script>
 
 <template>
   <p class="title-section">Trend Categories</p>
-  <div v-if="loading" class="grid grid-cols-8 gap-5">
-    <a-card class="card-category">
-      <a-skeleton-image />
-      <a-skeleton-button active :size="15" />
-    </a-card>
-    <a-card class="card-category">
-      <a-skeleton-image />
-      <a-skeleton-button active :size="15" />
-    </a-card>
-    <a-card class="card-category">
-      <a-skeleton-image />
-      <a-skeleton-button active :size="15" />
-    </a-card>
-    <a-card class="card-category">
-      <a-skeleton-image />
-      <a-skeleton-button active :size="15" />
-    </a-card>
-  </div>
+  <CategorySkeleton v-if="loading" />
+  
   <div v-if="!loading" class="grid grid-cols-8 gap-5">
     <div v-for="category in categories" :key="category">
       <a-card :bordered="false" class="card-category">

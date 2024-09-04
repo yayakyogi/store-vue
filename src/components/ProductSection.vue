@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import ProductSkeleton from './skeleton/ProductSkeleton.vue';
 
 const router = useRouter();
 
@@ -39,44 +40,7 @@ defineProps<{ data: ProductProps[]; loading: boolean }>()
     </div>
   </div>
 
-  <div v-if="loading" class="grid grid-cols-6 gap-5">
-    <div class="card-product">
-      <div class="image-section">
-        <a-skeleton-image v-if="loading" />
-      </div>
-      <a-skeleton v-if="loading" active size="small" />
-    </div>
-    <div class="card-product">
-      <div class="image-section">
-        <a-skeleton-image v-if="loading" />
-      </div>
-      <a-skeleton v-if="loading" active size="small" />
-    </div>
-    <div class="card-product">
-      <div class="image-section">
-        <a-skeleton-image v-if="loading" />
-      </div>
-      <a-skeleton v-if="loading" active size="small" />
-    </div>
-    <div class="card-product">
-      <div class="image-section">
-        <a-skeleton-image v-if="loading" />
-      </div>
-      <a-skeleton v-if="loading" active size="small" />
-    </div>
-    <div class="card-product">
-      <div class="image-section">
-        <a-skeleton-image v-if="loading" />
-      </div>
-      <a-skeleton v-if="loading" active size="small" />
-    </div>
-    <div class="card-product">
-      <div class="image-section">
-        <a-skeleton-image v-if="loading" />
-      </div>
-      <a-skeleton v-if="loading" active size="small" />
-    </div>
-  </div>
+  <ProductSkeleton v-if="loading" />
 </template>
 
 <style lang="less">

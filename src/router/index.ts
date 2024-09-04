@@ -31,14 +31,6 @@ const router = createRouter({
         layout: MainLayout
       }
     },
-    // {
-    //   path: '/:store',
-    //   name: 'store-detail',
-    //   component: DetailStoreView,
-    //   meta: {
-    //     layout: MainLayout
-    //   }
-    // },
     {
       path: '/product/:product_id',
       name: 'product-detail',
