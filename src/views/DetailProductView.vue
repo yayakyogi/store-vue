@@ -109,13 +109,13 @@ export default {
   <!-- Description Section -->
   <a-skeleton v-if="loading" />
   <div v-if="!loading" class="flex justify-between items-start gap-5 mt-8">
-    <div class="flex-1 description">
+    <div class="flex-1 description max-w-3/4">
       <p class="product-title">{{ product.title }}</p>
       <p class="author">By Yogi</p>
       <p class="price">{{ `$${product.price}` }}</p>
-      <span class="text-xl">Description</span>
-      <p class="max-w-3/4 text-slate-7">{{ product.description }}</p>
-      <p class="text-xl">Product Review</p>
+      <span class="text-lg">Description</span>
+      <p class=" text-slate-6">{{ product.description }}</p>
+      <p class="text-lg">Product Review</p>
       <div class="flex flex-col items-center my-3">
         <img src="/images/illustrations/empty-review.svg" class="w-1/3" />
         <p>This product doesn't have any review</p>
@@ -141,8 +141,7 @@ export default {
 }
 .description {
   .product-title {
-    font-size: 32px;
-    line-height: 10px;
+    font-size: 28px;
   }
 
   .author {
